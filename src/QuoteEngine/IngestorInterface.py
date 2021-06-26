@@ -3,7 +3,7 @@ from typing import List
 from .QuoteModel import QuoteModel
 
 
-class ImportInterface(ABC):
+class IngestorInterface(ABC):
     allowed_extension = []
 
     @classmethod
