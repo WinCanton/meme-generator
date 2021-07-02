@@ -19,7 +19,6 @@ class TxtIngestor(IngestorInterface):
 
     allowed_extension = ['txt']
 
-
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Check input file for correct file extension and extract data.

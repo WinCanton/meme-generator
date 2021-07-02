@@ -14,6 +14,7 @@ class MemeEngine():
     """A class to generate meme based on provided image and quote."""
 
     def __init__(self, path):
+        """Initialize object and store output directory location parameter."""
         self.output_path = path
 
     @staticmethod
@@ -73,7 +74,8 @@ class MemeEngine():
         font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf', size=30)
         text_color = (255, 255, 163)
         width = 30
-        self._draw_multiple_line_text(image, body, author, font, text_color, width)
+        self._draw_multiple_line_text(image, body, author, font, text_color,
+                                      width)
 
         output_meme = f'{self.output_path}/output.jpg'
         image.save(output_meme)

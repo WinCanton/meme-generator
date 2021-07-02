@@ -5,6 +5,8 @@ data from various types of input files. Having managed to extract
 data, ingestors shall utilise this class definition to construct
 Quote objects.
 """
+
+
 class QuoteModel:
     """A class container that defines and construct a QuoteModel.
 

@@ -22,7 +22,6 @@ class Ingestor(IngestorInterface):
 
     ingestors = [DocxIngestor, TxtIngestor, PdfIngestor, CsvIngestor]
 
-
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Perform ingestion of data based on file extension.

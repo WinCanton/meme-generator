@@ -20,7 +20,6 @@ class CsvIngestor(IngestorInterface):
 
     allowed_extension = ['csv']
 
-
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Check input file for correct file extension and extract data.

@@ -1,3 +1,9 @@
+"""A module to generate meme using provided image and quotes.
+
+Path to an image can be supplied via command line interface or
+set directory location. Similarly with quotes, which comprise
+of quote body and author.
+"""
 import os
 import random
 import argparse
@@ -40,9 +46,13 @@ def generate_meme(path=None, body=None, author=None):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate memes using command line.")
-    parser.add_argument('--path', type=str, help="Path to an image file.")
-    parser.add_argument('--body', type=str, help="Quote body to add to the image.")
-    parser.add_argument('--author', type=str, help="Quote author to add to the image")
+    parser = argparse.ArgumentParser(
+        description="Generate memes using command line.")
+    parser.add_argument('--path', type=str,
+                        help="Path to an image file.")
+    parser.add_argument('--body', type=str,
+                        help="Quote body to add to the image.")
+    parser.add_argument('--author', type=str,
+                        help="Quote author to add to the image")
     args = parser.parse_args()
     print(generate_meme(args.path, args.body, args.author))

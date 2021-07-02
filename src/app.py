@@ -1,3 +1,10 @@
+"""A module to generate a meme using web-based application.
+
+An image is selected randomly from a collection located in defined
+directory location. Similarly with quotes, which can be ingested
+from different file formats located in different directory locations.
+The generated meme is then displayed on the browser using Flask.
+"""
 import random
 import os
 import requests
@@ -11,8 +18,7 @@ meme = MemeEngine('./static')
 
 
 def setup():
-    """ Load all resources """
-
+    """Load all resources."""
     quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                    './_data/DogQuotes/DogQuotesDOCX.docx',
                    './_data/DogQuotes/DogQuotesPDF.pdf',
@@ -37,8 +43,7 @@ quotes, imgs = setup()
 
 @app.route('/')
 def meme_rand():
-    """ Generate a random meme """
-
+    """Generate a random meme."""
     img = random.choice(imgs)
     quote = random.choice(quotes)
     path = meme.make_meme(img, quote.body, quote.author)
@@ -47,14 +52,13 @@ def meme_rand():
 
 @app.route('/create', methods=['GET'])
 def meme_form():
-    """ User input for meme information """
+    """User input for meme information."""
     return render_template('meme_form.html')
 
 
 @app.route('/create', methods=['POST'])
 def meme_post():
-    """ Create a user defined meme """
-
+    """Create a user defined meme."""
     image_url = requests.form['image_url']
     body = requests.form['body']
     author = requests.form['author']

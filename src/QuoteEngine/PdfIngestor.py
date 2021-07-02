@@ -20,7 +20,6 @@ class PdfIngestor(IngestorInterface):
 
     allowed_extension = ['pdf']
 
-
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         """Check input file for correct file extension and extract data.
@@ -36,7 +35,8 @@ class PdfIngestor(IngestorInterface):
             raise Exception('Cannot Ingest Exception!')
 
         quotes = []
-        completed_process = subprocess.run(['pdftotext', '-layout', path], stdout=subprocess.PIPE)
+        completed_process = subprocess.run(['pdftotext', '-layout', path],
+                                           stdout=subprocess.PIPE)
         output = completed_process.stdout
 
         output_filepath = f'.{path.split(".")[-2:-1][0]}.txt'
@@ -49,5 +49,6 @@ class PdfIngestor(IngestorInterface):
                 body, author = stripped_line
                 quotes.append(QuoteModel(body, author))
 
-        completed_process = subprocess.run(['rm', output_filepath], stdout=subprocess.PIPE)
+        completed_process = subprocess.run(['rm', output_filepath],
+                                           stdout=subprocess.PIPE)
         return quotes
