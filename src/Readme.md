@@ -15,7 +15,7 @@ pip install requirements.txt
 ### PDFTOTEXT
 One of the sub-modules utilises an open source `pdftotext` utility which can be downloaded from the following location[https://www.xpdfreader.com/download.html]. Please follow provided instruction on the website on how to install on your working OS platform.
 
-## INTERFACE
+# INTERFACE
 There are 2 possible interface routes to the application: Command Line based and Web based.
 
 ### 1. Command Line (CLI)
@@ -59,3 +59,8 @@ The `Ingestor.py` is a strategy object that wraps the above implementation into 
 ## MEME CREATION
 The creation of meme is realised by `MemeEngine.py` module.
 This module is implemented by using PILLOW library.
+
+# SAMPLE MEME
+The following is an example of meme generated.
+
+![Meme](./static/output.jpg)
