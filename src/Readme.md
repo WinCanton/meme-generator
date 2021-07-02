@@ -13,7 +13,7 @@ pip install requirements.txt
 
 
 ### PDFTOTEXT
-One of the sub-modules utilises an open source `pdftotext` utility which can be downloaded from the following location[https://www.xpdfreader.com/download.html]. Please follow provided instruction on the website on how to install on your working OS platform.
+One of the sub-modules utilises an open source `pdftotext` utility which can be downloaded from the following ![location](https://www.xpdfreader.com/download.html). Please follow provided instruction on the website on how to install on your working OS platform.
 
 # INTERFACE
 There are 2 possible interface routes to the application: Command Line based and Web based.
