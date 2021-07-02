@@ -48,7 +48,6 @@ class MemeEngine():
         draw = ImageDraw.Draw(image)
         lines = textwrap.wrap(body, width)
         lines.append(f'<{author}>')
-        print(lines)
         x_text, y_text = self._randomise_location(image)
         for line in lines:
             line_width, line_height = font.getsize(line)
@@ -59,13 +58,14 @@ class MemeEngine():
     def make_meme(self, img_path, body, author, width=500) -> str:
         """Create meme with provided arguments and default width.
 
-        :param img_path {str}: path to input image:
-        :param body {str}: body text of a quote
-        :param author {str}: author of a quote
-        :param width {int}: the length of characters of text in one line
+        :param img_path : {str} path to input image
+        :param body : {str} body text of a quote
+        :param author : {str} author of a quote
+        :param width : {int} the length of characters of text in one line
         :return {str}: path to output meme file
         """
         image = Image.open(img_path)
+        image = image.convert('RGB')
 
         im_width, im_length = image.size
         aspect_ratio = im_width / im_length
@@ -77,7 +77,7 @@ class MemeEngine():
         self._draw_multiple_line_text(image, body, author, font, text_color,
                                       width)
 
-        output_meme = f'{self.output_path}/output.jpg'
+        output_meme = f'{self.output_path}/{randint(0, 10000)}.jpg'
         image.save(output_meme)
 
         return output_meme

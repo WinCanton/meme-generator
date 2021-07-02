@@ -59,15 +59,20 @@ def meme_form():
 @app.route('/create', methods=['POST'])
 def meme_post():
     """Create a user defined meme."""
-    image_url = requests.form['image_url']
-    body = requests.form['body']
-    author = requests.form['author']
+    image_url = request.form.get('image_url')
+    body = request.form.get('body', '')
+    author = request.form.get('author', 'anonymous')
 
-    image = requests.get(image_url)
-    output_file = f'./static/{random.randint(0,10000000)}.png'
-    open(output_file, 'wb').write(image.content)
+    try:
+        image = requests.get(image_url)
+        input_image = f'./temp.jpg'
+        with open(input_image, 'wb') as f:
+            f.write(image.content)
+    except Exception:
+        raise FileNotFoundError("Remote file can not be found!")
 
-    path = meme.make_meme(output_file, body, author)
+    path = meme.make_meme(input_image, body, author)
+    os.remove(input_image)
 
     return render_template('meme.html', path=path)
 
